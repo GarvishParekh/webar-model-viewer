@@ -118,20 +118,26 @@
 
   <!-- Instruction Logic -->
   <script>
-    const viewer = document.querySelector('model-viewer');
-    const instruction = document.getElementById('ar-instruction');
+  const viewer = document.querySelector('model-viewer');
+  const instruction = document.getElementById('ar-instruction');
+  const arButton = document.querySelector('.ar-btn');
 
-    viewer.addEventListener('ar-status', (event) => {
-      if (event.detail.status === 'session-started') {
-        instruction.style.opacity = '1';
+  // Show instruction on load
+  window.addEventListener('load', () => {
+    instruction.style.opacity = '1';
 
-        // Auto-hide after 6 seconds
-        setTimeout(() => {
-          instruction.style.opacity = '0';
-        }, 6000);
-      }
-    });
-  </script>
+    // Auto-hide after 7 seconds
+    setTimeout(() => {
+      instruction.style.opacity = '0';
+    }, 7000);
+  });
+
+  // Hide instruction when AR button is tapped
+  arButton.addEventListener('click', () => {
+    instruction.style.opacity = '0';
+  });
+</script>
+
 
 </body>
 </html>
